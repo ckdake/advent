@@ -24,12 +24,12 @@ with open('input.txt', 'r') as fd:
     candidate_array = list(candidate_string)
     
     if candidate_array[first_index - 1] == seek_char:
-	the_count += 1
+      the_count += 1
     if candidate_array[second_index - 1] == seek_char:
-        the_count += 1
+      the_count += 1
 
     if the_count == 1: 
-	valid_count += 1
+      valid_count += 1
 
-print valid_count
+print(valid_count)
 

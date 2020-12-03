@@ -15,6 +15,6 @@ for num1 in numbers:
   for num2 in numbers:
     for num3 in numbers:
       if 2020 == num1 + num2 + num3:
-        print num1 * num2 * num3
- 	break	
+        print(num1 * num2 * num3)
+        break  
 

@@ -32,10 +32,10 @@ def treefinder(map, right_increment, down_increment):
 
   return trees_encountered
 
-print treefinder(map, 1, 1)
-print treefinder(map, 3, 1)
-print treefinder(map, 5, 1)
-print treefinder(map, 7, 1)
-print treefinder(map, 1, 2)
+print(treefinder(map, 1, 1))
+print(treefinder(map, 3, 1))
+print(treefinder(map, 5, 1))
+print(treefinder(map, 7, 1))
+print(treefinder(map, 1, 2))
 
-print "product: ", treefinder(map, 1, 1) * treefinder(map, 3, 1) * treefinder(map, 5, 1) * treefinder(map, 7, 1) * treefinder(map, 1, 2)
+print("product: ", treefinder(map, 1, 1) * treefinder(map, 3, 1) * treefinder(map, 5, 1) * treefinder(map, 7, 1) * treefinder(map, 1, 2))

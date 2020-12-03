@@ -18,7 +18,6 @@ trees_encountered = 0
 current_column = 0
 
 for row in map:
-  print row
   if current_column > width - 1:
     current_column = current_column - width
   if row[current_column] == '#':
@@ -26,7 +25,7 @@ for row in map:
   current_column += 3
   
 
-print "rows:", len(map)
-print "cols: ", width
-print "trees: ", trees_encountered
+print("rows:", len(map))
+print("cols: ", width)
+print("trees: ", trees_encountered)
 

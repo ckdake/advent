@@ -25,10 +25,10 @@ with open('input.txt', 'r') as fd:
 
     for char in list(candidate_string):
       if char == seek_char: 
-        the_count += 1	
+        the_count += 1    
 
     if the_count >= min_count and the_count <= max_count:
-	valid_count += 1
+        valid_count += 1
 
-print valid_count
+print(valid_count)
 
