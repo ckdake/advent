@@ -9,24 +9,28 @@ import re
 # byr, iyr, eyr, hgt, hcl, ecl, pid are all required. cid is optional
 
 def byr_validate(string):
-    if not (1920 <= int(string) <= 2002):
+    """ validate birth year """
+    if not 1920 <= int(string) <= 2002:
         # print("invalid:", string)
         return False
     return True
 
 def iyr_validate(string):
-    if not (2010 <= int(string) <= 2020):
+    """ validate issue year """
+    if not 2010 <= int(string) <= 2020:
         # print("invalid:", string)
         return False
-    return True  
+    return True
 
 def eyr_validate(string):
-    if not (2020 <= int(string) <= 2030):
+    """ validate expire year """
+    if not 2020 <= int(string) <= 2030:
         # print("invalid:", string)
         return False
-    return True  
+    return True
 
 def hgt_validate(string):
+    """ validate height """
     if string.endswith('cm') and (150 <= int(string.replace('cm', '')) <= 193):
         return True
     elif string.endswith('in') and (50 <= int(string.replace('in', '')) <= 76):
@@ -36,19 +40,22 @@ def hgt_validate(string):
         return False
 
 def hcl_validate(string):
+    """ validate hair color """
     if not re.match('^#[0-9abcdef]{6,6}$', string):
         # print("invalid:", string)
         return False
     return True
 
 def ecl_validate(string):
+    """ validate eye color """
     if not ('amb', 'blu', 'brn', 'gry', 'grn', 'hzl', 'oth').count(string):
         # print("invalid:", string)
         return False
     return True
 
 def pid_validate(string):
-    return re.match('^[\d]{9,9}$', string)
+    """ validate password id """
+    return re.match(r'^[\d]{9,9}$', string)
 
 def checkvalid(passport):
     """ returns true if passport is valid """
