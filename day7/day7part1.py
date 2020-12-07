@@ -6,12 +6,15 @@ import re
 import networkx as nx
 
 
-def howmanybags(bag_graph, current_node):
+def howmanysuccessors(bag_graph, current_node, depth = 0, visited = set()):
     the_count = 1
-    # print(current_node, bag_graph[current_node].items())
+    visited.add(current_node)
+    
+    # print(depth, ":", current_node, bag_graph[current_node].items())
 
     for (node,attrs) in bag_graph[current_node].items():
-        the_count += howmanybags(bag_graph, node)
+        if node not in visited:
+            the_count += howmanysuccessors(bag_graph, node, depth + 1)
     return the_count
 
 def doit():
@@ -46,7 +49,7 @@ def doit():
         for value in shiny_gold_graph[key]:
             bags.add(value)
     print(len(bags) - 1)
-    print(howmanybags(color_graph, "shiny gold") - 1)
+    print(howmanysuccessors(color_graph, "shiny gold") - 1)
 
     # its not 4 or 5. 5 is immediate parents, need to go up the graph
     # 175 is too low
