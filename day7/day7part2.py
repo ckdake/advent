@@ -5,14 +5,13 @@ import csv
 import re
 import networkx as nx
 
-def howmanybags(bag_graph, current_node):
-    the_count = 0
+def weightedchildrencount(bag_graph, current_node, depth = 0):
+    the_count = 1
+    
+    print(depth, ":", current_node, bag_graph[current_node].items())
 
     for (node,attrs) in bag_graph[current_node].items():
-        print("checking:", current_node, node)
-        the_count += 1
-        the_count += howmanybags(bag_graph, node)
-
+        the_count += (int(attrs['weight']) * weightedchildrencount(bag_graph, node, depth + 1))
     return the_count
 
 
@@ -33,14 +32,15 @@ def doit():
                 match = re.match(r'^(.*) bags contain (\d) (.*) bag', row[0])
                 found_color = match.group(3)
                 the_weight = match.group(2)
-                color_graph.add_edge(found_color, first_color, weight=the_weight)
+                color_graph.add_edge(first_color, found_color, weight=the_weight)
             
             for another_bag in row[1:len(row)]:
                 match = re.match(r'^ (\d) (.*) bag', another_bag)
                 found_color = match.group(2)
                 the_weight = match.group(1)
-                color_graph.add_edge(found_color, first_color, weight=the_weight)
+                color_graph.add_edge(first_color, found_color, weight=the_weight)
 
-    print(howmanybags(color_graph, "shiny gold"))
+    # 369922 is too high
+    print(weightedchildrencount(color_graph, "shiny gold") - 1)
 
 doit()
