@@ -14,7 +14,7 @@ def treefinder():
     """ Does the work """
     the_map = []
 
-    with open('input.txt', 'r') as file_descriptor:
+    with open("input.txt", "r") as file_descriptor:
         reader = csv.reader(file_descriptor)
         for row in reader:
             the_map.append(list(row[0]))
@@ -26,12 +26,13 @@ def treefinder():
     for row in the_map:
         if current_column > width - 1:
             current_column = current_column - width
-        if row[current_column] == '#':
+        if row[current_column] == "#":
             trees_encountered += 1
         current_column += 3
 
     print("rows:", len(the_map))
     print("cols: ", width)
     print("trees: ", trees_encountered)
+
 
 treefinder()

@@ -9,7 +9,7 @@ import csv
 
 numbers = []
 
-with open('input.txt', 'r') as fd:
+with open("input.txt", "r") as fd:
     reader = csv.reader(fd)
     for row in reader:
         numbers.append(int(row[0]))

@@ -5,19 +5,24 @@ import csv
 
 
 def count_for_group(group_arr):
-    chars = set(group_arr[0]) # start with the first set of yes answers
-    for row in group_arr: # for each additional person, remove any from the set that they did not answer
+    chars = set(group_arr[0])  # start with the first set of yes answers
+    for (
+        row
+    ) in (
+        group_arr
+    ):  # for each additional person, remove any from the set that they did not answer
         for char in chars.copy():
             if char not in set(row):
                 chars.remove(char)
     return len(chars)
+
 
 def doit():
     """ Does the work """
 
     group_counts = []
 
-    with open('input.txt', 'r') as file_descriptor:
+    with open("input.txt", "r") as file_descriptor:
         reader = csv.reader(file_descriptor)
         agroup = []
         for row in reader:
@@ -32,5 +37,6 @@ def doit():
     print(group_counts)
     print("total: ", sum(group_counts))
 
-# 
+
+#
 doit()
